@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.personal.themovieproject.viewModel.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/bac_dim_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C0000000"
+            android:elevation="3dp"
+            android:visibility="@{viewModel.isLoading}" >
+        </RelativeLayout>
+
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="6dp"
+            android:visibility="@{viewModel.isLoading}"
+            android:id="@+id/progressBar" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="169dp"
+            android:layout_height="163dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="345dp"
+            android:id="@+id/gridlll"
+            android:layout_height="288dp"
+            android:layout_marginTop="64dp"
+            app:columnCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+
+            <TextView
+
+                android:text="Name"
+                app:layout_columnWeight="0.5"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:text="@={viewModel.director.name}"
+                app:layout_columnWeight="0.5" />
+
+
+
+            <TextView
+                android:text="Description"
+                app:layout_columnWeight="0.5" />
+
+
+            <TextView
+
+                android:text="@={viewModel.director.description}"
+                app:layout_columnWeight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                />
+        </androidx.gridlayout.widget.GridLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:onClick="@{(v)->viewModel.getAllCredits(v)}"
+            android:text="Get Movies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gridlll"
+            app:layout_constraintVertical_bias="0.677" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
