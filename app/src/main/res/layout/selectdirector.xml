@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@android:color/black">
 
 
         <RelativeLayout
@@ -24,8 +25,57 @@
             android:visibility="@{viewModel.isLoading}" >
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/dv"
+        <TextView
+            android:text="Directors"
+            android:id="@+id/name1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/linedivider"
+            app:layout_constraintTop_toBottomOf="@id/name1"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"/>
+
+
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linedivider"
+            android:layout_marginTop="15dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:background="@android:color/transparent"
+                android:scrollbars="vertical"
+                android:id="@+id/name_recycler"
+                android:layoutAnimation="@anim/layout_animation"
+
+                />
+
+        </androidx.core.widget.NestedScrollView>
+        <!--<Button
+            android:id="@+id/"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dv"
-            app:layout_constraintVertical_bias="0.131" />
+            app:layout_constraintVertical_bias="0.131" />-->
 
         <ProgressBar
             style="@style/Widget.AppCompat.ProgressBar"

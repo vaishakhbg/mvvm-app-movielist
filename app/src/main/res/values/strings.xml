@@ -2,4 +2,20 @@
     <string name="app_name">TheMovieProject</string>
     <string name="dummy_de">The main goal of this observer class is to be a central communication point for the lifecycle owner (Activity or Fragment) and the custom view that wants to observe that lifecycle. We could have set our custom view to inherit directly from LifecycleObserver but we think this approach is better and cleaner.
         Based on that knowledge, we can create two functions: one to register the lifecycle and the other to register the custom view in the a way that we can tell him what to do when a particular lifecycle event occurs.</string>
+
+    <string-array name ="directorsList" >
+        <item>Denis Villeneuve|137427</item>
+        <item>Damien Chazelle|136495</item>
+        <item>Steven Spielberg|488</item>
+        <item>Christopher Nolan|525</item>
+        <item>Martin Scorcese|1032</item>
+        <item>Quentin Tarantino|138</item>
+        <item>Alfred Hitchcock|2636</item>
+        <item>David Fincher|7467</item>
+        <item>Sidney Lumet|39996</item>
+        <item>James Cameron|2710</item>
+    </string-array>
+
+
+    <string name="app1_name">TheMovieProject</string>
 </resources>

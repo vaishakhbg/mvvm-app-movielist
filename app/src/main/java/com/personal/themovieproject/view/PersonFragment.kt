@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.personal.themovieproject.R
 import com.personal.themovieproject.databinding.PersonfragmentBinding
@@ -37,6 +38,7 @@ class PersonFragment:Fragment() {
 
         personfragmentBinding.lifecycleOwner=this.activity
         return personfragmentBinding.root
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -44,6 +46,20 @@ class PersonFragment:Fragment() {
         personfragmentBinding.executePendingBindings()
         val imageView: ImageView=requireActivity().findViewById(R.id.imageView)
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+mainViewModel.director.value!!.img_path).into(imageView)
+        subscribe(mainViewModel)
+    }
+
+    private fun subscribe(mainViewModel: MainViewModel) {
+        mainViewModel._isNewData.observe(requireActivity(), Observer { new_profile ->
+            if(new_profile) {
+                mainViewModel._isNewData.postValue(false)
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmenthere, CreditListFragment())
+                    .addToBackStack(null)
+                    .commit()
+            }
+
+        })
+    }
 
     }
-}
